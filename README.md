@@ -4,7 +4,7 @@ This is a simple API for managing tasks. It is built using TypeScript and Node.j
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/task-manager.git`
+1. Clone the repository: `git clone https://github.com/k0ndem0rr/task-manager.git`
 2. Install dependencies: `npm install`
 
 ## Usage
@@ -19,13 +19,14 @@ This is a simple API for managing tasks. It is built using TypeScript and Node.j
 - `POST /tasks`: Create a new task
 - `PUT /tasks/:id`: Update a task by ID
 - `DELETE /tasks/:id`: Delete a task by ID
+- `DELETE /tasks`: Delete all tasks
 
 ## Technologies Used
 
 - TypeScript
 - Node.js
 - Express.js
-- MongoDB
+- SQLite
 
 ## Contributing
 

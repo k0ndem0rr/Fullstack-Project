@@ -51,6 +51,13 @@ app.delete('/tasks/:id', async (req, res) => {
   res.send({ id: req.params.id });
 });
 
+// Ruta para borra todas las tareas
+app.delete('/tasks', async (req, res) => {
+  const db = await openDb();
+  await db.run('DELETE FROM Tasks');
+  res.send('All tasks deleted');
+});
+
 //Ruta para el script de la página
 app.get('/script.js', (_, res) => {
   res.sendFile('./script.js', {root: __dirname});

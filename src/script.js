@@ -5,6 +5,7 @@ document.getElementById('create-user-form').addEventListener('submit', function(
             axios.post('http://localhost:3000/users', { name: name, email: email })
                 .then(function(response) {
                    console.log(response.data);
+                   document.getElementById('user-name').value = '';
                 })
                 .catch(function(error) {
                     console.error(error);
@@ -29,6 +30,7 @@ document.getElementById('create-user-form').addEventListener('submit', function(
             axios.post('http://localhost:3000/tasks', { description: description })
                 .then(function(response) {
                     console.log(response.data);
+                    document.getElementById('task-description').value = '';
                 })
                 .catch(function(error) {
                     console.error(error);
@@ -39,6 +41,16 @@ document.getElementById('create-user-form').addEventListener('submit', function(
             e.preventDefault();
             var id = document.getElementById('task-id').value;
             axios.delete('http://localhost:3000/tasks/' + id)
+                .then(function(response) {
+                    console.log(response.data);
+                })
+                .catch(function(error) {
+                    console.error(error);
+                });
+        });
+
+        document.getElementById('delete-all-tasks').addEventListener('click', function() {
+            axios.delete('http://localhost:3000/tasks')
                 .then(function(response) {
                     console.log(response.data);
                 })
