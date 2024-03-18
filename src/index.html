@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Client</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <h1>API Client</h1>
+
+    <div style="display: flex;">
+        <div style="margin-right: 20px;">
+            <div id="users">
+                <h2>Create User</h2>
+                <form id="create-user-form">
+                    <input type="text" id="user-name" placeholder="Name">
+                    <input type="email" id="user-email" placeholder="Email">
+                    <button type="submit">Create User</button>
+                </form>
+
+                <h2>Delete User</h2>
+                <form id="delete-user-form">
+                    <input type="number" id="user-id" placeholder="ID">
+                    <button type="submit">Delete User</button>
+                </form>
+                <button id="get-users" style="margin-top: 20px;">Get Users</button>
+                <table id="users-table"></table>
+            </div>
+        </div>
+
+        <div>
+            <div id="tasks">
+                <h2>Create Task</h2>
+                <form id="create-task-form">
+                    <input type="text" id="task-description" placeholder="Description">
+                    <button type="submit">Create Task</button>
+                </form>
+                <h2>Delete Task</h2>
+                <form id="delete-task-form">
+                    <input type="number" id="task-id" placeholder="ID">
+                    <button type="submit">Delete Task</button>
+                </form>
+
+                
+                <button id="get-tasks" style="margin-top: 20px;">Get Tasks</button>
+
+                <table id="tasks-table"></table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./script.js"></script>
+    
+</body>
+</html>

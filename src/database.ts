@@ -15,6 +15,13 @@ async function openDb() {
         )
     `);
 
+    await db.run(`
+        CREATE TABLE IF NOT EXISTS tasks (
+            id INTEGER PRIMARY KEY,
+            description TEXT
+        )
+    `);
+
     return db;
 }
 

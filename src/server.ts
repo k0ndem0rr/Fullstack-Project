@@ -5,6 +5,10 @@ const app = express();
 app.use(express.json()); // Para poder parsear JSON en el cuerpo de las peticiones
 const port = 3000;
 
+// Ruta de bienvenida
+app.get('/', (_, res) => {
+    res.sendFile('./index.html', {root: __dirname});}); 
+
 // Ruta para obtener todos los usuarios
 app.get('/users', async (_, res) => {
     const db = await openDb();
@@ -15,7 +19,7 @@ app.get('/users', async (_, res) => {
 // Ruta para añadir un nuevo usuario
 app.post('/users', async (req, res) => {
     const db = await openDb();
-    const result = await db.run('INSERT INTO Users (name) VALUES (?)', req.body.name);
+    const result = await db.run('INSERT INTO Users (name, email) VALUES (?, ?)', req.body.name, req.body.email);
     res.send({ id: result.lastID });
 });
 
@@ -45,6 +49,11 @@ app.delete('/tasks/:id', async (req, res) => {
   const db = await openDb();
   await db.run('DELETE FROM Tasks WHERE id = ?', req.params.id);
   res.send({ id: req.params.id });
+});
+
+//Ruta para el script de la página
+app.get('/script.js', (_, res) => {
+  res.sendFile('./script.js', {root: __dirname});
 });
 
 app.listen(port, () => {
