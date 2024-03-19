@@ -24,6 +24,7 @@ document.getElementById('delete-user-form').addEventListener('submit', function(
     axios.delete('http://localhost:3000/users/' + email)
         .then(function(response) {
             console.log(response.data);
+            printUsers();
         })
         .catch(function(error) {
             console.error(error);
