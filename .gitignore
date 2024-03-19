@@ -20,5 +20,6 @@ package-lock.json
 yarn.lock
 
 # Database
+mydb.sqlite
 mydb copy.sqlite
 

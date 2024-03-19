@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "export JWT_SECRET=$(cat key) && nodemon --watch './' --exec ts-node ./src/server.ts"
+    "start": "export JWT_SECRET=$(cat key) && nodemon --watch './' --exec ts-node ./src/server.ts",
+    "example bd": "mv my_example_db.sqlite mydb.sqlite"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.6.8",
     "express": "^4.18.3",
     "jsonwebtoken": "^9.0.2",
     "sqlite": "^5.1.1",
