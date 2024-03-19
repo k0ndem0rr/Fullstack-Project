@@ -19,15 +19,14 @@ app.get('/users', async (_, res) => {
 // Ruta para añadir un nuevo usuario
 app.post('/users', async (req, res) => {
     const db = await openDb();
-    const result = await db.run('INSERT INTO Users (name, email) VALUES (?, ?)', req.body.name, req.body.email);
-    res.send({ id: result.lastID });
+    const result = await db.run('INSERT INTO Users (email, name) VALUES (?, ?)', req.body.email, req.body.name);
 });
 
 //Ruta para borrar un usuario
-app.delete('/users/:id', async (req, res) => {
+app.delete('/users/:email', async (req, res) => {
     const db = await openDb();
-    await db.run('DELETE FROM Users WHERE id = ?', req.params.id);
-    res.send({ id: req.params.id });
+    await db.run('DELETE FROM Users WHERE email = ?', req.params.email);
+    res.send({ email: req.params.email });
 });
 
 // Ruta para obtener todas las tareas

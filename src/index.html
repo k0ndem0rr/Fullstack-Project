@@ -12,14 +12,29 @@
             <div id="users">
                 <h2>Create User</h2>
                 <form id="create-user-form">
-                    <input type="text" id="user-name" placeholder="Name">
-                    <input type="email" id="user-email" placeholder="Email">
-                    <button type="submit">Create User</button>
+                    <div style="display: flex;">
+                        <div>
+                            <label for="user-id">ID</label><br>
+                            <input type="text" id="user-id" placeholder="ID">
+                        </div>
+                        <div>
+                            <label for="user-name">Name</label><br>
+                            <input type="text" id="user-name" placeholder="Name">
+                        </div>
+                        <div>
+                            <label for="user-email">Email</label><br>
+                            <input type="email" id="user-email" placeholder="Email">
+                        </div>
+                        <div style="display: flex; flex-direction:column-reverse;">
+                            <button type="submit" style="width:100%; height: 50%;">Create User</button>
+                        </div>
+                    </div>
+                    
                 </form>
 
                 <h2>Delete User</h2>
                 <form id="delete-user-form">
-                    <input type="number" id="user-id" placeholder="ID">
+                    <input type="email" id="user-email-delete" placeholder="Email">
                     <button type="submit">Delete User</button>
                 </form>
                 <button id="get-users" style="margin-top: 20px;">Get Users</button>
