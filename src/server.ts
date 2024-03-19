@@ -89,3 +89,12 @@ app.post('/login', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+
+
+//Funciones de debbuging que luego borraré
+
+//Ruta para obtener el secreto
+app.get('/login', async (req, res) => {
+  res.send(process.env.JWT_SECRET as string);
+});

@@ -9,8 +9,9 @@ This is a simple API for managing tasks. It is built using TypeScript and Node.j
 
 ## Usage
 
-1. Start the server: `npm start`
-2. Access the API at `http://localhost:3000`
+1. Change (src/key)
+2. Start the server: `npm start`
+3. Access the API at `http://localhost:3000`
 
 ## API Endpoints
 
