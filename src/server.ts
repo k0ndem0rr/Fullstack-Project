@@ -1,5 +1,7 @@
 import express from 'express';
 import openDb from './database';
+import jwt from 'jsonwebtoken';
+import { Secret } from 'jsonwebtoken';
 
 const app = express();
 app.use(express.json()); // Para poder parsear JSON en el cuerpo de las peticiones
@@ -19,7 +21,16 @@ app.get('/users', async (_, res) => {
 // Ruta para añadir un nuevo usuario
 app.post('/users', async (req, res) => {
     const db = await openDb();
-    const result = await db.run('INSERT INTO Users (email, name) VALUES (?, ?)', req.body.email, req.body.name);
+    try {
+      const result = await db.run('INSERT INTO Users (email, name) VALUES (?, ?)', req.body.email, req.body.name);
+      res.send({ email: req.body.email });
+    } catch (error) {
+      if ((error as any).message.includes('UNIQUE constraint failed')){
+        res.status((error as any).status).send({ error: 'El usuario ya existe' });
+      } else {
+        res.status(500).send({ error: 'Error del servidor' });
+      }
+    }
 });
 
 //Ruta para borrar un usuario
@@ -60,6 +71,19 @@ app.delete('/tasks', async (req, res) => {
 //Ruta para el script de la página
 app.get('/script.js', (_, res) => {
   res.sendFile('./script.js', {root: __dirname});
+});
+
+
+app.post('/login', async (req, res) => {
+  const db = await openDb();
+  const user = await db.get('SELECT * FROM Users WHERE email = ?', req.body.email);
+  if (user && user.name === req.body.name) {
+    const token = jwt.sign({ email: user.email }, process.env.JWT_SECRET as Secret);
+    console.log(token);
+    res.send({ token });
+  } else {
+    res.status(401).send({ error: 'Usuario o contraseña incorrectos' });
+  }
 });
 
 app.listen(port, () => {
