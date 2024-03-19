@@ -28,6 +28,7 @@ This is a simple API for managing tasks. It is built using TypeScript and Node.j
 - Node.js
 - Express.js
 - SQLite
+- JSON Web Token
 
 ## Contributing
 
