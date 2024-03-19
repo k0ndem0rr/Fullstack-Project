@@ -18,3 +18,7 @@ dist/
 # Dependency lock files
 package-lock.json
 yarn.lock
+
+# Database
+mydb copy.sqlite
+
