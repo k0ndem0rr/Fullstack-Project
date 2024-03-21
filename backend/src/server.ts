@@ -3,6 +3,7 @@ import openDb from './database';
 import jwt from 'jsonwebtoken';
 import { Secret } from 'jsonwebtoken';
 import cors from 'cors';
+import path from 'path';
 
 const app = express();
 app.use(express.json()); // Para poder parsear JSON en el cuerpo de las peticiones
@@ -12,7 +13,7 @@ const port = 3000;
 
 // Ruta de bienvenida
 app.get('/', (_, res) => {
-    res.send('<h1>Bienvenido a la API de tareas, usa el HTML de la carpeta frontend para interactuar con ella<h1>');
+  res.sendFile(path.join(__dirname, '../../frontend/index.html'));
 }); 
 
 // Ruta para obtener todos los usuarios
@@ -74,9 +75,8 @@ app.delete('/tasks', async (req, res) => {
 
 //Ruta para el script de la página
 app.get('/script.js', (_, res) => {
-  res.sendFile('./script.js', {root: __dirname});
+  res.sendFile(path.join(__dirname, '../../frontend/dist/script.js'));
 });
-
 
 app.post('/login', async (req, res) => {
   const db = await openDb();
