@@ -2,15 +2,20 @@ import express from 'express';
 import openDb from './database';
 import jwt from 'jsonwebtoken';
 import { Secret } from 'jsonwebtoken';
+import cors from 'cors';
+
+
+
 
 const app = express();
 app.use(express.json()); // Para poder parsear JSON en el cuerpo de las peticiones
 app.use(express.static('dist')); // Para servir los ficheros estáticos de la carpeta public
+app.use(cors()); // Para permitir peticiones desde cualquier origen
 const port = 3000;
 
 // Ruta de bienvenida
 app.get('/', (_, res) => {
-    res.sendFile('./index.html', {root: __dirname});}); 
+    res.sendFile('../frontend/index.html', {root: __dirname});}); 
 
 // Ruta para obtener todos los usuarios
 app.get('/users', async (_, res) => {
