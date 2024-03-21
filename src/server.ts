@@ -5,6 +5,7 @@ import { Secret } from 'jsonwebtoken';
 
 const app = express();
 app.use(express.json()); // Para poder parsear JSON en el cuerpo de las peticiones
+app.use(express.static('dist')); // Para servir los ficheros estáticos de la carpeta public
 const port = 3000;
 
 // Ruta de bienvenida

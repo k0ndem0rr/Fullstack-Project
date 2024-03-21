@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "export JWT_SECRET=$(cat key) && nodemon --watch './' --exec ts-node ./src/server.ts",
+    "build": "tsc",
+    "start": "export JWT_SECRET=$(cat src/key) && nodemon --watch './' --exec ts-node ./src/server.ts",
     "example bd": "mv my_example_db.sqlite mydb.sqlite"
   },
   "keywords": [],
